@@ -1,3 +1,4 @@
+require('dotenv').config(); //.env הפעלת פונקציה שמשלבת את משתני הסביבה מתוך הקובץ
 const express = require('express'); // חיבור לספריית express
 const app = express(); // אובייקט מסוג express
 const productRouter = require('./api/v1/routes/product'); //כדי שנוכל להשתמש בניתובים שלו באפליקציה product ייבוא של קובץ 
@@ -7,7 +8,10 @@ const userRouter = require('./api/v1/routes/user'); //כדי שנוכל להשת
 const morgan = require('morgan'); // http לניטור בקשות morgan חיבור לספריית
 const ipFilter = require('./api/v1/middlewares/ipFilter'); //ip לסינון כתובות middleware ייבוא
 app.use(morgan('dev')); //developer בפורמט http לניטור בקשות morgan שימוש ב
-
+const mongoUser = process.env.MONGO_USER; //.env יצירת משתנה שלוקח את המידע שנמצא בקובץ
+const mongoPass = process.env.MONGO_PASS; //.env יצירת משתנה שלוקח את המידע שנמצא בקובץ
+const mongoServer = process.env.MONGO_SERVER; //.env יצירת משתנה שלוקח את המידע שנמצא בקובץ
+const mongoConnStr = `mongodb+srv://${mongoUser}:${mongoPass}@${mongoServer}/?appName=Ecomm`; //mongodb מחרוזת התחברות ל
 // היא שכבת ביניים או שכבת תיווך middleware
 app.use(ipFilter); //באפליקציה middlewareרישום ה 
 
