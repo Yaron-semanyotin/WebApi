@@ -21,4 +21,3 @@ app.use((req,res)=>{ // הגדרת שכבה אחרונה עבוד הודעה 404
 });
 module.exports = app; // ייצוא קובץ app
 
-//
